@@ -34,6 +34,11 @@ Route::group(['prefix' => 'admin'], function () {
   Route::resource('/genere', 'AdminAuth\\GenereController');
   Route::resource('/category', 'AdminAuth\\CategoryController');
   Route::resource('/placepresentation', 'AdminAuth\\PlacepresentationController');
+  Route::get('/myprofile', 'AdminAuth\AdminController@profilesettings')->name('settings');
+  Route::resource('/settings', 'AdminAuth\\AdminController');
+  Route::get('/settingscred/{id}/edit_cred', 'AdminAuth\\AdminController@edit_cred');
+  Route::post('/settingscred/{id}/upcredentials', 'AdminAuth\\AdminController@update_cred');
+  Route::get('/paswordchange', 'AdminAuth\AdminController@paswordchange')->name('paswordchange');
 
 });
 

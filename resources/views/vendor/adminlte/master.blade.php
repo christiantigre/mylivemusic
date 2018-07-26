@@ -43,6 +43,19 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js"></script>
 @endif
 
+<!-- Datepicker  -->
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">  -->
+    <link href="{{ asset('vendor/adminlte/plugins/datepicker/bootstrap.min.css') }}" rel="stylesheet">  
+      <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">-->
+  <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">-->
+  <link href="{{ asset('vendor/adminlte/plugins/datepicker/bootstrap-datepicker.css') }}" rel="stylesheet">
+  <script src="{{ asset('vendor/adminlte/plugins/datepicker/jquery/1.9.1/jquery.js') }}"></script>
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>-->
+  <script src="{{ asset('vendor/adminlte/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
+  <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> 
+  <script src="{{ asset('vendor/adminlte/plugins/datepicker/jquery.js') }}"></script> 
+  <!-- Fin Datepicker  -->
+
     @yield('adminlte_css')
 
     <!--[if lt IE 9]>

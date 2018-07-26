@@ -17,6 +17,17 @@ class CreateAdminsTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->text('img')->nullable();
+            $table->text('abrev')->nullable();
+            $table->text('nombres')->nullable();
+            $table->text('apellidos')->nullable();
+            $table->text('fecha_nacimiento')->nullable();
+            $table->text('telefono')->nullable();
+            $table->text('celular')->nullable();
+            $table->text('pais')->nullable();
+            $table->text('ciudad')->nullable();
+            $table->text('direccion')->nullable();
+            $table->boolean('activo')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });
