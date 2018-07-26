@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Country;
 
-class DatabaseSeeder extends Seeder
+class CountryTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +12,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(CountryTableSeeder::class);
-        $this->call(EstateTableSeeder::class);
+        Country::create( [
+			'country'=>'México'
+		] );
     }
 }

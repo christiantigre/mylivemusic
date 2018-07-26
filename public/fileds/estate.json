@@ -1,0 +1,44 @@
+{
+    "fields": [
+        {
+            "name": "estate",
+            "type": "string"
+        },
+        {
+            "name": "detall",
+            "type": "text"
+        },
+        {
+            "name": "active",
+            "type": "boolean"
+        },
+        {
+            "name": "country_id",
+            "type": "integer#unsigned"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "country_id",
+            "references": "id",
+            "on": "countries"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "Country",
+            "type": "belongsTo",
+            "class": "App\\Country"
+        }
+    ],
+    "validations": [
+        {
+            "field": "estate",
+            "rules": "required|max:191"
+        },
+        {
+            "field": "detall",
+            "rules": "required"
+        }
+    ]
+} 

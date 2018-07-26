@@ -13,7 +13,7 @@
 
                         <form method="GET" action="{{ url('/%%routeGroup%%%%viewName%%') }}" accept-charset="UTF-8" class="navbar-form navbar-right" role="search">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
+                                <input type="text" class="form-control" name="search" placeholder="{{ trans('adminlte::adminlte.Search') }}..." value="{{ request('search') }}">
                                 <span class="input-group-btn">
                                     <button class="btn btn-secondary" type="submit">
                                         <i class="fa fa-search"></i>

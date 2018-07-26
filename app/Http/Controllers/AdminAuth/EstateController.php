@@ -5,10 +5,11 @@ namespace App\Http\Controllers\AdminAuth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Country;
+use App\Estate;
 use Illuminate\Http\Request;
+use App\Country;
 
-class CountryController extends Controller
+class EstateController extends Controller
 {
     //PROTEJO MI RUTA ADMINISTRADOR
     public function __construct()
@@ -26,15 +27,17 @@ class CountryController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $country = Country::where('country', 'LIKE', "%$keyword%")
+            $estate = Estate::where('estate', 'LIKE', "%$keyword%")
                 ->orWhere('detall', 'LIKE', "%$keyword%")
-                ->orWhere('activo', 'LIKE', "%$keyword%")
-                ->latest()->paginate($perPage);
+                ->orWhere('active', 'LIKE', "%$keyword%")
+                ->orWhere('country_id', 'LIKE', "%$keyword%")
+                ->get();
+                //->latest()->paginate($perPage);
         } else {
-            $country = Country::latest()->paginate($perPage);
+            $estate = Estate::where('active', 1)->get();//latest()->paginate($perPage);
         }
 
-        return view('admin.country.index', compact('country'));
+        return view('admin.estate.index', compact('estate'));
     }
 
     /**
@@ -44,7 +47,8 @@ class CountryController extends Controller
      */
     public function create()
     {
-        return view('admin.country.create');
+        $countries = Country::where('activo','1')->pluck('country', 'id');
+        return view('admin.estate.create', compact('countries'));
     }
 
     /**
@@ -57,14 +61,22 @@ class CountryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-			'country' => 'required|max:191',
+			'estate' => 'required|max:191',
 			'detall' => 'required'
 		]);
         $requestData = $request->all();
-        
-        Country::create($requestData);
 
-        return redirect('admin/country')->with('flash_message', 'Country added!');
+        try {
+
+            Estate::create($requestData);
+            alert()->success('Se registro de forma correcta este registro.','Petición realizada con exito')->persistent('Close');
+        } catch (Exception $e) {
+            alert()->warning('No se pudo realizar la petición de forma correcta.','No se pudo registrar')->persistent('Close');
+            
+        }
+        
+
+        return redirect('admin/estate');
     }
 
     /**
@@ -76,9 +88,9 @@ class CountryController extends Controller
      */
     public function show($id)
     {
-        $country = Country::findOrFail($id);
+        $estate = Estate::findOrFail($id);
 
-        return view('admin.country.show', compact('country'));
+        return view('admin.estate.show', compact('estate'));
     }
 
     /**
@@ -90,9 +102,9 @@ class CountryController extends Controller
      */
     public function edit($id)
     {
-        $country = Country::findOrFail($id);
-
-        return view('admin.country.edit', compact('country'));
+        $estate = Estate::findOrFail($id);
+        $countries = Country::where('activo','1')->pluck('country', 'id');
+        return view('admin.estate.edit', compact('estate','countries'));
     }
 
     /**
@@ -106,15 +118,21 @@ class CountryController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-			'country' => 'required|max:191',
+			'estate' => 'required|max:191',
 			'detall' => 'required'
 		]);
         $requestData = $request->all();
-        
-        $country = Country::findOrFail($id);
-        $country->update($requestData);
 
-        return redirect('admin/country')->with('flash_message', 'Country updated!');
+        try {
+            $estate = Estate::findOrFail($id);
+            $estate->update($requestData);
+            alert()->success('Se actualizo de forma correcta este registro.','Petición realizada con exito')->persistent('Close');
+        } catch (Exception $e) {
+            alert()->warning('No se pudo realizar la actualización de forma correcta.','No se pudo actualizar')->persistent('Close');
+        }
+        
+
+        return redirect('admin/estate');
     }
 
     /**
@@ -126,9 +144,16 @@ class CountryController extends Controller
      */
     public function destroy($id)
     {
-        Country::destroy($id);
+        try {
+            
+            Estate::destroy($id);
+            alert()->success('Se Elimino de forma correcta este registro.','Petición realizada con exito')->persistent('Close');
+            
+        } catch (\Exception $e) {
+            alert()->warning('No se pudo realizar la petición de forma correcta.','No se pudo eliminar')->persistent('Close');
+        }
 
-        return redirect('admin/country')->with('flash_message', 'Country deleted!');
+        return redirect('admin/estate');
     }
 
     //DECLARO EL GUARD PARA QUEA ACCEDIBLE POR USUARIOS ADMIN UNICAMENTE//
@@ -138,5 +163,5 @@ class CountryController extends Controller
         return Auth::guard('admin');
     }
 
-    
+
 }

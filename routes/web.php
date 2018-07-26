@@ -29,6 +29,7 @@ Route::group(['prefix' => 'admin'], function () {
   Route::get('/password/reset/{token}', 'AdminAuth\ResetPasswordController@showResetForm');
   Route::get('/administracion', 'AdminAuth\AdminController@index')->name('home');
   Route::resource('/country', 'AdminAuth\\CountryController');
+  Route::resource('/estate', 'AdminAuth\\EstateController');
 
 });
 
@@ -63,5 +64,9 @@ Route::group(['prefix' => 'customer'], function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+
 
 

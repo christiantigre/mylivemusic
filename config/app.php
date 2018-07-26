@@ -179,6 +179,7 @@ return [
         //Adminlte
         JeroenNoten\LaravelAdminLte\ServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
 
     ],
 
@@ -230,6 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'HTML' => Collective\Html\HtmlFacade::class,
+        'Alert' => UxWeb\SweetAlert\SweetAlert::class,
 
     ],
 

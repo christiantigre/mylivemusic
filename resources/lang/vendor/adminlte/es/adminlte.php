@@ -20,7 +20,7 @@ return [
     'reset_password'              => 'Restablecer la contraseña',
     'send_password_reset_link'    => 'Enviar link de restablecimiento de contraseña',
     'Country'                     => 'Pais',
-    'Country'                     => 'Pais',
+    'Countries'                   => 'Paises',
     'Add_New'                     => 'Nuevo',
     'Search'                      => 'Buscar',
     'Back'                        => 'Atras',
@@ -32,5 +32,6 @@ return [
     'Active'                      => 'Activo',
     'Inactive'                    => 'Inactivo',
     'Update'                      => 'Actualizar',
+    'Estate'                      => 'Estado',
 ];
 

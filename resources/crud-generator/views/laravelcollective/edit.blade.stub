@@ -1,15 +1,13 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 
 @section('content')
-    <div class="container">
         <div class="row">
-            @include('admin.sidebar')
 
             <div class="col-md-9">
-                <div class="card">
-                    <div class="card-header">Edit %%modelName%% #{{ $%%crudNameSingular%%->%%primaryKey%% }}</div>
-                    <div class="card-body">
-                        <a href="{{ url('/%%routeGroup%%%%viewName%%') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                <div class="panel">
+                    <div class="panel-heading">{{ trans('adminlte::adminlte.Edit') }} %%modelName%% #{{ $%%crudNameSingular%%->%%primaryKey%% }}</div>
+                    <div class="panel-body">
+                        <a href="{{ url('/%%routeGroup%%%%viewName%%') }}" title="{{ trans('adminlte::adminlte.Back') }}"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> {{ trans('adminlte::adminlte.Back') }}</button></a>
                         <br />
                         <br />
 
@@ -21,20 +19,17 @@
                             </ul>
                         @endif
 
-                        {!! Form::model($%%crudNameSingular%%, [
-                            'method' => 'PATCH',
-                            'url' => ['/%%routeGroup%%%%viewName%%', $%%crudNameSingular%%->%%primaryKey%%],
-                            'class' => 'form-horizontal',
-                            'files' => true
-                        ]) !!}
+                        <form method="POST" action="{{ url('/%%routeGroup%%%%viewName%%/' . $%%crudNameSingular%%->%%primaryKey%%) }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                            {{ method_field('PATCH') }}
+                            {{ csrf_field() }}
 
-                        @include ('%%viewTemplateDir%%.form', ['submitButtonText' => 'Update'])
+                            @include ('%%viewTemplateDir%%.form', ['submitButtonText' => trans('adminlte::adminlte.Update') ])
 
-                        {!! Form::close() !!}
+                        </form>
 
                     </div>
                 </div>
             </div>
+            @include('admin.sidebar')
         </div>
-    </div>
 @endsection

@@ -5,9 +5,9 @@
 
             <div class="col-md-9">
                 <div class="panel panel-default">
-                    <div class="panel-heading">{{ trans('adminlte::adminlte.Create') }} {{ trans('adminlte::adminlte.Add_New') }} %%modelName%%</div>
+                    <div class="panel-heading">{{ trans('adminlte::adminlte.Create') }} {{ trans('adminlte::adminlte.Add_New') }} {{ trans('adminlte::adminlte.Estate') }}</div>
                     <div class="panel-body">
-                        <a href="{{ url('/%%routeGroup%%%%viewName%%') }}" title="{{ trans('adminlte::adminlte.Back') }}"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> {{ trans('adminlte::adminlte.Back') }}</button></a>
+                        <a href="{{ url('/admin/estate') }}" title="{{ trans('adminlte::adminlte.Back') }}"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> {{ trans('adminlte::adminlte.Back') }}</button></a>
                         <br />
                         <br />
 
@@ -19,10 +19,10 @@
                             </ul>
                         @endif
 
-                        <form method="POST" action="{{ url('/%%routeGroup%%%%viewName%%') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('/admin/estate') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
-                            @include ('%%viewTemplateDir%%.form')
+                            @include ('admin.estate.form')
 
                         </form>
 
