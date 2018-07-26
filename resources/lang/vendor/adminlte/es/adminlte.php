@@ -19,4 +19,18 @@ return [
     'password_reset_message'      => 'Restablecer la contraseña',
     'reset_password'              => 'Restablecer la contraseña',
     'send_password_reset_link'    => 'Enviar link de restablecimiento de contraseña',
+    'Country'                     => 'Pais',
+    'Country'                     => 'Pais',
+    'Add_New'                     => 'Nuevo',
+    'Search'                      => 'Buscar',
+    'Back'                        => 'Atras',
+    'Create'                      => 'Crear',
+    'Detall'                      => 'Detalle',
+    'View'                        => 'Ver',
+    'Edit'                        => 'Editar',
+    'Delete'                      => 'Eliminar',
+    'Active'                      => 'Activo',
+    'Inactive'                    => 'Inactivo',
+    'Update'                      => 'Actualizar',
 ];
+

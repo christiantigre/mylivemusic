@@ -133,7 +133,7 @@ return [
             'icon' => 'lock',
         ],
         [
-            'text'    => 'Multilevel',
+            'text'    => 'WebPage',
             'icon'    => 'share',
             'submenu' => [
                 [
@@ -141,7 +141,7 @@ return [
                     'url'  => '#',
                 ],
                 [
-                    'text'    => 'Level One',
+                    'text'    => 'Parametros',
                     'url'     => '#',
                     'submenu' => [
                         [
@@ -149,12 +149,12 @@ return [
                             'url'  => '#',
                         ],
                         [
-                            'text'    => 'Level Two',
+                            'text'    => 'Localidades',
                             'url'     => '#',
                             'submenu' => [
                                 [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
+                                    'text' => 'Pais',
+                                    'url'  => 'admin/country',
                                 ],
                                 [
                                     'text' => 'Level Three',
