@@ -5,11 +5,10 @@ namespace App\Http\Controllers\AdminAuth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Estate;
+use App\Placepresentation;
 use Illuminate\Http\Request;
-use App\Country;
 
-class EstateController extends Controller
+class PlacepresentationController extends Controller
 {
     //PROTEJO MI RUTA ADMINISTRADOR
     public function __construct()
@@ -27,17 +26,15 @@ class EstateController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $estate = Estate::where('estate', 'LIKE', "%$keyword%")
+            $placepresentation = Placepresentation::where('place', 'LIKE', "%$keyword%")
                 ->orWhere('detall', 'LIKE', "%$keyword%")
                 ->orWhere('active', 'LIKE', "%$keyword%")
-                ->orWhere('country_id', 'LIKE', "%$keyword%")
-                ->get();
-                //->latest()->paginate($perPage);
+                ->latest()->paginate($perPage);
         } else {
-            $estate = Estate::get();//latest()->paginate($perPage);
+            $placepresentation = Placepresentation::latest()->paginate($perPage);
         }
 
-        return view('admin.estate.index', compact('estate'));
+        return view('admin.placepresentation.index', compact('placepresentation'));
     }
 
     /**
@@ -47,8 +44,7 @@ class EstateController extends Controller
      */
     public function create()
     {
-        $countries = Country::where('activo','1')->pluck('country', 'id');
-        return view('admin.estate.create', compact('countries'));
+        return view('admin.placepresentation.create');
     }
 
     /**
@@ -61,22 +57,22 @@ class EstateController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-			'estate' => 'required|max:191',
+			'place' => 'required|max:191',
 			'detall' => 'required'
 		]);
         $requestData = $request->all();
+        
 
         try {
 
-            Estate::create($requestData);
+            Placepresentation::create($requestData);
             alert()->success('Se registro de forma correcta este registro.','Petición realizada con exito')->persistent('Close');
         } catch (Exception $e) {
             alert()->warning('No se pudo realizar la petición de forma correcta.','No se pudo registrar')->persistent('Close');
             
         }
-        
 
-        return redirect('admin/estate');
+        return redirect('admin/placepresentation')->with('flash_message', 'Placepresentation added!');
     }
 
     /**
@@ -88,9 +84,9 @@ class EstateController extends Controller
      */
     public function show($id)
     {
-        $estate = Estate::findOrFail($id);
+        $placepresentation = Placepresentation::findOrFail($id);
 
-        return view('admin.estate.show', compact('estate'));
+        return view('admin.placepresentation.show', compact('placepresentation'));
     }
 
     /**
@@ -102,9 +98,9 @@ class EstateController extends Controller
      */
     public function edit($id)
     {
-        $estate = Estate::findOrFail($id);
-        $countries = Country::where('activo','1')->pluck('country', 'id');
-        return view('admin.estate.edit', compact('estate','countries'));
+        $placepresentation = Placepresentation::findOrFail($id);
+
+        return view('admin.placepresentation.edit', compact('placepresentation'));
     }
 
     /**
@@ -118,21 +114,24 @@ class EstateController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-			'estate' => 'required|max:191',
+			'place' => 'required|max:191',
 			'detall' => 'required'
 		]);
         $requestData = $request->all();
-
-        try {
-            $estate = Estate::findOrFail($id);
-            $estate->update($requestData);
-            alert()->success('Se actualizo de forma correcta este registro.','Petición realizada con exito')->persistent('Close');
-        } catch (Exception $e) {
-            alert()->warning('No se pudo realizar la actualización de forma correcta.','No se pudo actualizar')->persistent('Close');
-        }
+        
         
 
-        return redirect('admin/estate');
+        try {
+
+            $placepresentation = Placepresentation::findOrFail($id);
+            $placepresentation->update($requestData);
+            alert()->success('Se actualizó de forma correcta este registro.','Petición realizada con exito')->persistent('Close');
+        } catch (Exception $e) {
+            alert()->warning('No se pudo realizar la petición de forma correcta.','No se pudo actualizar')->persistent('Close');
+            
+        }
+
+        return redirect('admin/placepresentation')->with('flash_message', 'Placepresentation updated!');
     }
 
     /**
@@ -145,15 +144,14 @@ class EstateController extends Controller
     public function destroy($id)
     {
         try {
-            
-            Estate::destroy($id);
-            alert()->success('Se Elimino de forma correcta este registro.','Petición realizada con exito')->persistent('Close');
-            
-        } catch (\Exception $e) {
+            Placepresentation::destroy($id);
+            alert()->success('Se eliminó de forma correcta este registro.','Petición realizada con exito')->persistent('Close');
+        } catch (Exception $e) {
             alert()->warning('No se pudo realizar la petición de forma correcta.','No se pudo eliminar')->persistent('Close');
+            
         }
 
-        return redirect('admin/estate');
+        return redirect('admin/placepresentation')->with('flash_message', 'Placepresentation deleted!');
     }
 
     //DECLARO EL GUARD PARA QUEA ACCEDIBLE POR USUARIOS ADMIN UNICAMENTE//
@@ -162,6 +160,5 @@ class EstateController extends Controller
     {
         return Auth::guard('admin');
     }
-
 
 }

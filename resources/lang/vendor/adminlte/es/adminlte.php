@@ -33,5 +33,8 @@ return [
     'Inactive'                    => 'Inactivo',
     'Update'                      => 'Actualizar',
     'Estate'                      => 'Estado',
+    'Genere'                      => 'Genero',
+    'Category'                    => 'Categoría',
+    'Placepresentation'           => 'Lugar de presentación',
 ];
 

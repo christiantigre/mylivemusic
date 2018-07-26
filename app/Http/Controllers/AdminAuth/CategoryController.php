@@ -5,11 +5,10 @@ namespace App\Http\Controllers\AdminAuth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Estate;
+use App\Category;
 use Illuminate\Http\Request;
-use App\Country;
 
-class EstateController extends Controller
+class CategoryController extends Controller
 {
     //PROTEJO MI RUTA ADMINISTRADOR
     public function __construct()
@@ -27,17 +26,15 @@ class EstateController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $estate = Estate::where('estate', 'LIKE', "%$keyword%")
+            $category = Category::where('category', 'LIKE', "%$keyword%")
                 ->orWhere('detall', 'LIKE', "%$keyword%")
                 ->orWhere('active', 'LIKE', "%$keyword%")
-                ->orWhere('country_id', 'LIKE', "%$keyword%")
-                ->get();
-                //->latest()->paginate($perPage);
+                ->latest()->paginate($perPage);
         } else {
-            $estate = Estate::get();//latest()->paginate($perPage);
+            $category = Category::latest()->paginate($perPage);
         }
 
-        return view('admin.estate.index', compact('estate'));
+        return view('admin.category.index', compact('category'));
     }
 
     /**
@@ -47,8 +44,7 @@ class EstateController extends Controller
      */
     public function create()
     {
-        $countries = Country::where('activo','1')->pluck('country', 'id');
-        return view('admin.estate.create', compact('countries'));
+        return view('admin.category.create');
     }
 
     /**
@@ -61,22 +57,22 @@ class EstateController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-			'estate' => 'required|max:191',
+			'category' => 'required|max:191',
 			'detall' => 'required'
 		]);
         $requestData = $request->all();
+        
 
         try {
 
-            Estate::create($requestData);
+            Category::create($requestData);
             alert()->success('Se registro de forma correcta este registro.','Petición realizada con exito')->persistent('Close');
         } catch (Exception $e) {
             alert()->warning('No se pudo realizar la petición de forma correcta.','No se pudo registrar')->persistent('Close');
             
         }
-        
 
-        return redirect('admin/estate');
+        return redirect('admin/category')->with('flash_message', 'Category added!');
     }
 
     /**
@@ -88,9 +84,9 @@ class EstateController extends Controller
      */
     public function show($id)
     {
-        $estate = Estate::findOrFail($id);
+        $category = Category::findOrFail($id);
 
-        return view('admin.estate.show', compact('estate'));
+        return view('admin.category.show', compact('category'));
     }
 
     /**
@@ -102,9 +98,9 @@ class EstateController extends Controller
      */
     public function edit($id)
     {
-        $estate = Estate::findOrFail($id);
-        $countries = Country::where('activo','1')->pluck('country', 'id');
-        return view('admin.estate.edit', compact('estate','countries'));
+        $category = Category::findOrFail($id);
+
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
@@ -118,21 +114,15 @@ class EstateController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-			'estate' => 'required|max:191',
+			'category' => 'required|max:191',
 			'detall' => 'required'
 		]);
         $requestData = $request->all();
-
-        try {
-            $estate = Estate::findOrFail($id);
-            $estate->update($requestData);
-            alert()->success('Se actualizo de forma correcta este registro.','Petición realizada con exito')->persistent('Close');
-        } catch (Exception $e) {
-            alert()->warning('No se pudo realizar la actualización de forma correcta.','No se pudo actualizar')->persistent('Close');
-        }
         
+        $category = Category::findOrFail($id);
+        $category->update($requestData);
 
-        return redirect('admin/estate');
+        return redirect('admin/category')->with('flash_message', 'Category updated!');
     }
 
     /**
@@ -144,16 +134,9 @@ class EstateController extends Controller
      */
     public function destroy($id)
     {
-        try {
-            
-            Estate::destroy($id);
-            alert()->success('Se Elimino de forma correcta este registro.','Petición realizada con exito')->persistent('Close');
-            
-        } catch (\Exception $e) {
-            alert()->warning('No se pudo realizar la petición de forma correcta.','No se pudo eliminar')->persistent('Close');
-        }
+        Category::destroy($id);
 
-        return redirect('admin/estate');
+        return redirect('admin/category')->with('flash_message', 'Category deleted!');
     }
 
     //DECLARO EL GUARD PARA QUEA ACCEDIBLE POR USUARIOS ADMIN UNICAMENTE//

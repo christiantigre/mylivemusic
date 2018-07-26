@@ -145,8 +145,8 @@ return [
                     'url'     => '#',
                     'submenu' => [
                         [
-                            'text' => 'Level Two',
-                            'url'  => '#',
+                            'text' => 'Generos Musiales',
+                            'url'  => 'admin/genere',
                         ],
                         [
                             'text'    => 'Localidades',
@@ -161,6 +161,19 @@ return [
                                     'url'  => 'admin/estate',
                                 ],
                             ],
+                        ],[
+                            'text'    => 'Categorías',
+                            'url'     => '#',
+                            'submenu' => [
+                                [
+                                    'text' => 'Categorías',
+                                    'url'  => 'admin/category',
+                                ],
+                                [
+                                    'text' => 'Lugares presentación',
+                                    'url'  => 'admin/placepresentation',
+                                ],
+                            ],
                         ],
                     ],
                 ],
@@ -170,7 +183,7 @@ return [
                 ],
             ],
         ],
-        'LABELS',
+        'LABELS', 
         [
             'text'       => 'Important',
             'icon_color' => 'red',

@@ -4,7 +4,7 @@
         <div class="row">
 
             <div class="col-md-9">
-                <div class="panel">
+                <div class="panel panel-default">
                     <div class="panel-heading">{{ trans('adminlte::adminlte.Edit') }} %%modelName%% #{{ $%%crudNameSingular%%->%%primaryKey%% }}</div>
                     <div class="panel-body">
                         <a href="{{ url('/%%routeGroup%%%%viewName%%') }}" title="{{ trans('adminlte::adminlte.Back') }}"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> {{ trans('adminlte::adminlte.Back') }}</button></a>

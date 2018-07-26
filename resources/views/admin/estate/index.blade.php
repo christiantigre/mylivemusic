@@ -31,7 +31,8 @@
                                         <th>#</th>
                                         <th>{{ trans('adminlte::adminlte.Estate') }}</th>
                                         <th>{{ trans('adminlte::adminlte.Detall') }}</th>
-                                        <th>{{ trans('adminlte::adminlte.Active') }}</th><th>Actions</th>
+                                        <th>{{ trans('adminlte::adminlte.Active') }}</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
@@ -39,7 +40,8 @@
                                         <th>#</th>
                                         <th>{{ trans('adminlte::adminlte.Estate') }}</th>
                                         <th>{{ trans('adminlte::adminlte.Detall') }}</th>
-                                        <th>{{ trans('adminlte::adminlte.Active') }}</th><th>Actions</th>
+                                        <th>{{ trans('adminlte::adminlte.Active') }}</th>
+                                        <th>Actions</th>
                                       </tr>
                                 </tfoot>
                                 <tbody>
@@ -53,7 +55,8 @@
                                                 <small class="label label-success">{{ trans('adminlte::adminlte.Active') }}</small>
                                             @else
                                                 <small class="label label-danger">{{ trans('adminlte::adminlte.Inactive') }}</small>
-                                            @endif</td>
+                                            @endif
+                                        </td>
                                         <td>
                                             <a href="{{ url('/admin/estate/' . $item->id) }}" title="{{ trans('adminlte::adminlte.View') }} Estate"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> {{ trans('adminlte::adminlte.View') }}</button></a>
                                             <a href="{{ url('/admin/estate/' . $item->id . '/edit') }}" title="{{ trans('adminlte::adminlte.Edit') }} Estate"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {{ trans('adminlte::adminlte.Edit') }}</button></a>
@@ -80,12 +83,13 @@
         </div>
         <script type="text/javascript">
             //$(document).ready(function() {
-                $('#state').DataTable( {
+                $('#state').DataTable();
+                /*$('#state').DataTable( {
                   dom: 'Bfrtip',
                   buttons: [
                   'copy', 'csv', 'excel', 'pdf', 'print'
                   ]
-                } );
+                } );*/
              // } );
         </script>
 @endsection

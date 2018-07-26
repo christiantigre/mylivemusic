@@ -30,6 +30,10 @@ Route::group(['prefix' => 'admin'], function () {
   Route::get('/administracion', 'AdminAuth\AdminController@index')->name('home');
   Route::resource('/country', 'AdminAuth\\CountryController');
   Route::resource('/estate', 'AdminAuth\\EstateController');
+  Route::get('/', 'AdminAuth\AdminController@index')->name('/');
+  Route::resource('/genere', 'AdminAuth\\GenereController');
+  Route::resource('/category', 'AdminAuth\\CategoryController');
+  Route::resource('/placepresentation', 'AdminAuth\\PlacepresentationController');
 
 });
 
@@ -64,6 +68,9 @@ Route::group(['prefix' => 'customer'], function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
 
 
 
