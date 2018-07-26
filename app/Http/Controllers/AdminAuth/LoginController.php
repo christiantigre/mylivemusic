@@ -29,7 +29,9 @@ class LoginController extends Controller
      *
      * @var string
      */
-    public $redirectTo = '/admin/home';
+    //public $redirectTo = '/admin/home';
+    //Redirecciona a una ruta si es correcto el login del admin
+    public $redirectTo = '/admin/administracion';
 
     /**
      * Create a new controller instance.
