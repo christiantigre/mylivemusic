@@ -91,7 +91,8 @@ class AdminController extends Controller
         $administrador = Admin::findOrFail($id);
         $countries = Country::where('activo','1')->pluck('country', 'id');
         $estatus = Estate::where('active','1')->pluck('estate', 'id');
-        return view('admin.profile.edit', compact('administrador','countries','estatus'));
+
+        return view('admin.profile.edit', compact('administrador','countries','estatus','title'));
     }
 
     /**

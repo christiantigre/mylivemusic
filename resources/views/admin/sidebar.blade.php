@@ -1,14 +1,24 @@
 <div class="col-md-3">
     <div class="panel panel-success">
         <div class="panel-heading">
-            Sidebar
+            
+            @if(isset($title))
+            {{ $title }}
+        @else
+            EXTRAS
+        @endif
         </div>
 
         <div class="panel-body">
             <ul class="nav" role="tablist">
                 <li role="presentation">
                     <a href="{{ url('/admin') }}">
-                        Dashboard
+                        
+                        @if(isset($cont))
+            {!! $cont !!}
+        @else
+            Detalles
+        @endif
                     </a>
                 </li>
             </ul>

@@ -1,7 +1,6 @@
 @extends('adminlte::page')
 
 @section('content')
-    <div class="container">
         <div class="row">
 
             <div class="col-md-9">
@@ -76,6 +75,7 @@
                     </div>
                 </div>
             </div>
+            @include('admin.profile.sidebar')
         </div>
-    </div>
+    
 @endsection

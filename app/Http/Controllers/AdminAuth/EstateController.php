@@ -27,10 +27,12 @@ class EstateController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $estate = Estate::where('estate', 'LIKE', "%$keyword%")
-                ->orWhere('detall', 'LIKE', "%$keyword%")
-                ->orWhere('active', 'LIKE', "%$keyword%")
-                ->orWhere('country_id', 'LIKE', "%$keyword%")
+            $estate = Estate::where('estates.estate', 'LIKE', "%$keyword%")
+                ->orWhere('estates.detall', 'LIKE', "%$keyword%")
+                ->orWhere('estates.active', 'LIKE', "%$keyword%")
+                ->orWhere('estates.country_id', 'LIKE', "%$keyword%")
+                ->orWhere('countries.country', 'LIKE', "%$keyword%")
+                ->join('countries', 'countries.id', '=', 'estates.country_id')
                 ->get();
                 //->latest()->paginate($perPage);
         } else {

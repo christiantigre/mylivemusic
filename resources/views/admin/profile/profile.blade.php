@@ -20,9 +20,9 @@
 
           <!-- Profile Image -->
           <div class="box box-primary">
-            <div class="box-body box-profile">
+            <div class="box-body ">
               @if(empty($administrador->img))
-              <img class="profile-user-img img-responsive img-circle" src="{{ asset('static/avatar.jpg') }}" alt="User profile picture">
+              <img class="profile-user-img img-responsive img-circle" src="{{ asset('statics/avatar.jpg') }}" alt="User profile picture">
               @else
               <img class="profile-user-img img-responsive img-circle" src="{{ asset($administrador->img) }}" alt="User profile picture">
               @endif
