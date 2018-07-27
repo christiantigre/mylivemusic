@@ -31,6 +31,11 @@
                                         <th>#</th><th>Genere Music</th><th>Detall</th><th>Active</th><th>Actions</th>
                                     </tr>
                                 </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>#</th><th>Genere Music</th><th>Detall</th><th>Active</th><th>Actions</th>
+                                    </tr>
+                                </tfoot>
                                 <tbody>
                                 @foreach($genere as $item)
                                     <tr>

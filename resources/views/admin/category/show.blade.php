@@ -25,7 +25,13 @@
                                     <tr>
                                         <th>ID</th><td>{{ $category->id }}</td>
                                     </tr>
-                                    <tr><th> Category </th><td> {{ $category->category }} </td></tr><tr><th> Detall </th><td> {{ $category->detall }} </td></tr><tr><th> Active </th><td> {{ $category->active }} </td></tr>
+                                    <tr><th> Category </th><td> {{ $category->category }} </td></tr><tr><th> Detall </th><td> {{ $category->detall }} </td></tr><tr><th> Active </th><td> 
+                                        @if(($category->active)=='1')
+                                                <small class="label label-success">{{ trans('adminlte::adminlte.Active') }}</small>
+                                            @else
+                                                <small class="label label-danger">{{ trans('adminlte::adminlte.Inactive') }}</small>
+                                            @endif
+                                             </td></tr>
                                 </tbody>
                             </table>
                         </div>

@@ -1,12 +1,9 @@
 <?php
-
 namespace App\Http\Controllers\AdminAuth;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Hesto\MultiAuth\Traits\LogsoutGuard;
-
 class LoginController extends Controller
 {
     /*
@@ -19,11 +16,9 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-
     use AuthenticatesUsers, LogsoutGuard {
         LogsoutGuard::logout insteadof AuthenticatesUsers;
     }
-
     /**
      * Where to redirect users after login / registration.
      *
@@ -32,7 +27,6 @@ class LoginController extends Controller
     //public $redirectTo = '/admin/home';
     //Redirecciona a una ruta si es correcto el login del admin
     public $redirectTo = '/admin/administracion';
-
     /**
      * Create a new controller instance.
      *
@@ -42,7 +36,6 @@ class LoginController extends Controller
     {
         $this->middleware('admin.guest', ['except' => 'logout']);
     }
-
     /**
      * Show the application's login form.
      *
@@ -52,7 +45,6 @@ class LoginController extends Controller
     {
         return view('admin.auth.login');
     }
-
     /**
      * Get the guard to be used during authentication.
      *

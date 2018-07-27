@@ -1,13 +1,10 @@
 <?php
-
 namespace App\Http\Controllers\AdminAuth;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Http\Request;
-
 class ResetPasswordController extends Controller
 {
     /*
@@ -20,17 +17,13 @@ class ResetPasswordController extends Controller
     | explore this trait and override any methods you wish to tweak.
     |
     */
-
     use ResetsPasswords;
-
     /**
      * Where to redirect users after login / registration.
      *
      * @var string
      */
     public $redirectTo = '/admin/administracion';
-
-
     /**
      * Create a new controller instance.
      *
@@ -40,7 +33,6 @@ class ResetPasswordController extends Controller
     {
         $this->middleware('admin.guest');
     }
-
     /**
      * Display the password reset view for the given token.
      *
@@ -56,7 +48,6 @@ class ResetPasswordController extends Controller
             ['token' => $token, 'email' => $request->email]
         );
     }
-
     /**
      * Get the broker to be used during password reset.
      *
@@ -66,7 +57,6 @@ class ResetPasswordController extends Controller
     {
         return Password::broker('admins');
     }
-
     /**
      * Get the guard to be used during password reset.
      *

@@ -15,5 +15,9 @@ class CountryTableSeeder extends Seeder
         Country::create( [
 			'country'=>'México'
 		] );
+
+        Country::create( [
+            'country'=>'Ecuador'
+        ] );
     }
 }

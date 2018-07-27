@@ -25,12 +25,17 @@
                         <br/>
                         <br/>
                         <div class="table-responsive">
-                            <table class="table">
+                            <table id="place" class="table table-striped table-bordered" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
                                         <th>#</th><th>Place</th><th>Detall</th><th>Active</th><th>Actions</th>
                                     </tr>
                                 </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>#</th><th>Place</th><th>Detall</th><th>Active</th><th>Actions</th>
+                                    </tr>
+                                </tfoot>
                                 <tbody>
                                 @foreach($placepresentation as $item)
                                     <tr>
@@ -65,4 +70,8 @@
             </div>
             @include('admin.sidebar')
         </div>
+
+        <script type="text/javascript">
+            $('#place').DataTable();
+        </script>
 @endsection

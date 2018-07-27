@@ -36,5 +36,26 @@ return [
     'Genere'                      => 'Genero',
     'Category'                    => 'Categoría',
     'Placepresentation'           => 'Lugar de presentación',
+    'Names'                       => 'Nombres',
+    'Lastnames'                   => 'Apellidos',
+    'Phone'                       => 'Teléfono',
+    'Cellphone'                   => 'Celular',
+    'birth_date'                  => 'Fecha de nacimiento',
+    'City'                        => 'Ciudad',
+    'Address'                     => 'Dirección',
+    'Work_abbreviation'           => 'Abreviatura cargo',
+    'Image'                       => 'Imagen',
+    'Account_active'                       => 'Cuenta Activa',
+    'Yes'                       => 'Si',
+    'No'                       => 'No',
+    'Username'                       => 'Usuario',
+    'Email'                       => 'Correo',
+    'Password'                       => 'Contraseña',
+    'Password_confirmed'                       => 'Confirma Contraseña',
+    'Credentials'                       => 'Credenciales', 
+    'Profile'                       => 'Perfil', 
 ];
+
+
+
 

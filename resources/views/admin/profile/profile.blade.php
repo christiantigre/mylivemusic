@@ -142,19 +142,28 @@
                 </li>
                 <li class="list-group-item">
                   <b>Pais</b> <a class="pull-right">
-                    @if(empty($administrador->pais))
+                    @if(empty($administrador->country_id))
                      -
                     @else
-                    {{ $administrador->pais }}
+                    {{ $administrador->Country->country }}
                     @endif
                   </a>
                 </li>                
                 <li class="list-group-item">
                   <b>Ciudad</b> <a class="pull-right">
-                    @if(empty($administrador->ciudad))
+                    @if(empty($administrador->estate_id))
                      -
                     @else
-                    {{ $administrador->ciudad }}
+                    {{ $administrador->Estate->estate }}
+                    @endif
+                  </a>
+                </li> 
+                <li class="list-group-item">
+                  <b>Dirección</b> <a class="pull-right">
+                    @if(empty($administrador->direccion))
+                     -
+                    @else
+                    {{ $administrador->direccion }}
                     @endif
                   </a>
                 </li>              

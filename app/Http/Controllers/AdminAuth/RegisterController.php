@@ -1,13 +1,10 @@
 <?php
-
 namespace App\Http\Controllers\AdminAuth;
-
 use App\Admin;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
-
 class RegisterController extends Controller
 {
     /*
@@ -20,16 +17,13 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-
     use RegistersUsers;
-
     /**
      * Where to redirect users after login / registration.
      *
      * @var string
      */
     protected $redirectTo = '/admin/administracion';
-
     /**
      * Create a new controller instance.
      *
@@ -39,7 +33,6 @@ class RegisterController extends Controller
     {
         $this->middleware('admin.guest');
     }
-
     /**
      * Get a validator for an incoming registration request.
      *
@@ -54,7 +47,6 @@ class RegisterController extends Controller
             'password' => 'required|min:6|confirmed',
         ]);
     }
-
     /**
      * Create a new user instance after a valid registration.
      *
@@ -69,7 +61,6 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
-
     /**
      * Show the application registration form.
      *
@@ -79,7 +70,6 @@ class RegisterController extends Controller
     {
         return view('admin.auth.register');
     }
-
     /**
      * Get the guard to be used during registration.
      *

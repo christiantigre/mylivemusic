@@ -17,19 +17,19 @@ class Admin extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
-      'password',
-      'img',
-      'abrev',
-      'nombres',
-      'apellidos',
-      'fecha_nacimiento',
-      'telefono',
-      'celular',
-      'pais',
-      'ciudad',
-      'direccion',
-      'activo',
+         'email',
+          'password',
+          'img',
+          'abrev',
+          'nombres',
+          'apellidos',
+          'fecha_nacimiento',
+          'telefono',
+          'celular',
+          'country_id',
+          'estate_id',
+          'direccion',
+          'activo',
     ];
 
     /**
@@ -51,4 +51,16 @@ class Admin extends Authenticatable
     {
         $this->notify(new AdminResetPassword($token));
     }
+
+    public function Country()
+    {
+        return $this->belongsTo('App\Country');
+    }
+
+
+    public function Estate()
+    {
+        return $this->belongsTo('App\Estate');
+    }
+
 }

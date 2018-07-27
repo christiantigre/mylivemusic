@@ -6,8 +6,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Estate;
-use Illuminate\Http\Request;
 use App\Country;
+use Illuminate\Http\Request;
 
 class EstateController extends Controller
 {

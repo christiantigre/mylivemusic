@@ -23,11 +23,13 @@ class CreateAdminsTable extends Migration
             $table->text('apellidos')->nullable();
             $table->text('fecha_nacimiento')->nullable();
             $table->text('telefono')->nullable();
-            $table->text('celular')->nullable();
-            $table->text('pais')->nullable();
-            $table->text('ciudad')->nullable();
-            $table->text('direccion')->nullable();
-            $table->boolean('activo')->default(1);
+            $table->text('celular')->nullable();           
+            $table->text('activo')->nullable();           
+            $table->text('direccion')->nullable();           
+            $table->integer('country_id')->unsigned()->nullable();
+            $table->foreign('country_id')->references('id')->on('countries');
+            $table->integer('estate_id')->unsigned()->nullable();
+            $table->foreign('estate_id')->references('id')->on('estates');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -8,6 +8,8 @@ use App\Admin;
 use Session;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
+use App\Estate;
+use App\Country;
 
 class AdminController extends Controller
 {
@@ -33,6 +35,11 @@ class AdminController extends Controller
         $administrador = Admin::findOrFail($admin);
 
         return view('admin.profile.profile', compact('administrador'));
+    }
+
+    public function children(Request $request)
+    {
+        return Estate::where('country_id', $request->parent)->pluck('estate', 'id');
     }
 
     public function edit_cred($id)
@@ -82,8 +89,9 @@ class AdminController extends Controller
     public function edit($id)
     {
         $administrador = Admin::findOrFail($id);
-        
-        return view('admin.profile.edit', compact('administrador'));
+        $countries = Country::where('activo','1')->pluck('country', 'id');
+        $estatus = Estate::where('active','1')->pluck('estate', 'id');
+        return view('admin.profile.edit', compact('administrador','countries','estatus'));
     }
 
     /**

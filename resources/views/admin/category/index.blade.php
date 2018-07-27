@@ -25,17 +25,30 @@
                         <br/>
                         <br/>
                         <div class="table-responsive">
-                            <table class="table">
+                            <table id="category" class="table table-striped table-bordered" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
                                         <th>#</th><th>Category</th><th>Detall</th><th>Active</th><th>Actions</th>
                                     </tr>
                                 </thead>
+                                
+                                <tfoot>
+                                    <tr>
+                                        <th>#</th><th>Category</th><th>Detall</th><th>Active</th><th>Actions</th>
+                                    </tr>
+                                </tfoot>
                                 <tbody>
                                 @foreach($category as $item)
                                     <tr>
                                         <td>{{ $loop->iteration or $item->id }}</td>
-                                        <td>{{ $item->category }}</td><td>{{ $item->detall }}</td><td>{{ $item->active }}</td>
+                                        <td>{{ $item->category }}</td><td>{{ $item->detall }}</td>
+                                        <td>
+                                            @if(($item->active)=='1')
+                                                <small class="label label-success">{{ trans('adminlte::adminlte.Active') }}</small>
+                                            @else
+                                                <small class="label label-danger">{{ trans('adminlte::adminlte.Inactive') }}</small>
+                                            @endif
+                                        </td>
                                         <td>
                                             <a href="{{ url('/admin/category/' . $item->id) }}" title="{{ trans('adminlte::adminlte.View') }} Category"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> {{ trans('adminlte::adminlte.View') }}</button></a>
                                             <a href="{{ url('/admin/category/' . $item->id . '/edit') }}" title="{{ trans('adminlte::adminlte.Edit') }} Category"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {{ trans('adminlte::adminlte.Edit') }}</button></a>
@@ -58,4 +71,7 @@
             </div>
             @include('admin.sidebar')
         </div>
+        <script type="text/javascript">
+            $('#category').DataTable();
+        </script>
 @endsection
