@@ -1,0 +1,68 @@
+{
+    "fields": [        
+        {
+            "name": "gr_name",
+            "type": "string"
+        },
+        {
+            "name": "gr_datestart",
+            "type": "string"
+        },
+        {
+            "name": "gr_detall",
+            "type": "string"
+        },
+        {
+            "name": "gr_slogan",
+            "type": "string"
+        },
+        {
+            "name": "gr_logo",
+            "type": "string"
+        },
+        {
+            "name": "gr_email",
+            "type": "string"
+        },
+        {
+            "name": "gr_about",
+            "type": "string"
+        },
+        {
+            "name": "gr_phone",
+            "type": "string"
+        },
+        {
+            "name": "gr_cellphone",
+            "type": "string"
+        },
+        {
+            "name": "active",
+            "type": "boolean"
+        },
+        {
+            "name": "manager_id",
+            "type": "integer#unsigned"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "manager_id",
+            "references": "id",
+            "on": "managers"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "Manager",
+            "type": "belongsTo",
+            "class": "App\\Manager"
+        }
+    ],
+    "validations": [
+        {
+            "field": "gr_name",
+            "rules": "required|max:191"
+        }
+    ]
+} 

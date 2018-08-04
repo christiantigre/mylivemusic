@@ -1,0 +1,18 @@
+{
+    "fields": [
+        {
+            "name": "multimedia",
+            "type": "string"
+        },
+        {
+            "name": "active",
+            "type": "boolean"
+        }
+    ],
+    "validations": [
+        {
+            "field": "multimeadia",
+            "rules": "required|max:191"
+        }
+    ]
+} 

@@ -1,0 +1,40 @@
+{
+    "fields": [        
+        {
+            "name": "sc_link",
+            "type": "text"
+        },
+        {
+            "name": "sc_redsocial",
+            "type": "string"
+        },
+        {
+            "name": "active",
+            "type": "boolean"
+        },
+        {
+            "name": "member_id",
+            "type": "integer#unsigned"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "member_id",
+            "references": "id",
+            "on": "managers"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "Member",
+            "type": "belongsTo",
+            "class": "App\\Member"
+        }
+    ],
+    "validations": [
+        {
+            "field": "sc_link",
+            "rules": "required"
+        }
+    ]
+} 

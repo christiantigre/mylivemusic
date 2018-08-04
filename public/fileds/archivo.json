@@ -1,0 +1,52 @@
+{
+    "fields": [        
+        {
+            "name": "title",
+            "type": "string"
+        },
+        {
+            "name": "subtitle",
+            "type": "string"
+        },
+        {
+            "name": "path_file",
+            "type": "string"
+        },
+        {
+            "name": "link_media",
+            "type": "string"
+        },
+        {
+            "name": "detall",
+            "type": "string"
+        },
+        {
+            "name": "active",
+            "type": "boolean"
+        },
+        {
+            "name": "multimedia_id",
+            "type": "integer#unsigned"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "multimedia_id",
+            "references": "id",
+            "on": "multimedia"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "Multimedia",
+            "type": "belongsTo",
+            "class": "App\\Multimedia"
+        }
+    ],
+    "validations": [
+        {
+            "field": "title",
+            "rules": "required|max:191"
+        }
+    ]
+} 

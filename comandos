@@ -1,0 +1,19 @@
+php artisan crud:generate Multimedia --fields_from_file="C:\Users\Christian\Dropbox\mylivemusic\public\fileds\multimedia.json" --view-path=admin --controller-namespace=AdminAuth --route-group=admin
+
+php artisan crud:generate File --fields_from_file="C:\Users\Christian\Dropbox\mylivemusic\public\fileds\archivo.json" --view-path=admin --controller-namespace=AdminAuth --route-group=admin
+
+php artisan crud:generate Typepack --fields_from_file="C:\Users\Christian\Dropbox\mylivemusic\public\fileds\tipo_paquete.json" --view-path=admin --controller-namespace=AdminAuth --route-group=admin
+
+php artisan crud:generate Detallpack --fields_from_file="C:\Users\Christian\Dropbox\mylivemusic\public\fileds\detall_pack.json" --view-path=admin --controller-namespace=AdminAuth --route-group=admin
+
+php artisan crud:generate Group --fields_from_file="C:\Users\Christian\Dropbox\mylivemusic\public\fileds\group.json" --view-path=admin --controller-namespace=AdminAuth --route-group=admin
+
+php artisan crud:generate Member --fields_from_file="C:\Users\Christian\Dropbox\mylivemusic\public\fileds\member.json" --view-path=admin --controller-namespace=AdminAuth --route-group=admin
+
+php artisan crud:generate Socialgroup --fields_from_file="C:\Users\Christian\Dropbox\mylivemusic\public\fileds\socials_group.json" --view-path=admin --controller-namespace=AdminAuth --route-group=admin
+
+php artisan crud:generate Socialmember --fields_from_file="C:\Users\Christian\Dropbox\mylivemusic\public\fileds\socials_member.json" --view-path=admin --controller-namespace=AdminAuth --route-group=admin
+
+php artisan crud:generate Typepresentation --fields_from_file="C:\Users\Christian\Dropbox\mylivemusic\public\fileds\type_presentation.json" --view-path=admin --controller-namespace=AdminAuth --route-group=admin
+
+php artisan crud:generate Summer --fields_from_file="C:\Users\Christian\Dropbox\mylivemusic\public\fileds\summer.json" --view-path=admin --controller-namespace=AdminAuth --route-group=admin

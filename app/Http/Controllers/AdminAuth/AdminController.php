@@ -91,7 +91,7 @@ class AdminController extends Controller
         $administrador = Admin::findOrFail($id);
         $countries = Country::where('activo','1')->pluck('country', 'id');
         $estatus = Estate::where('active','1')->pluck('estate', 'id');
-
+        //dd($administrador);
         return view('admin.profile.edit', compact('administrador','countries','estatus','title'));
     }
 
@@ -160,6 +160,7 @@ class AdminController extends Controller
 
     //ACTUALIZA LAS CREDENCIAES DE SESSION DEL USUARIO
     public function update_cred(Request $request, $id){
+
         $this->validate($request, [
             'name' => '|min:1|max:20',
             'email' => 'min:6|max:45|required|email', 

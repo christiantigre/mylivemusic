@@ -1,0 +1,72 @@
+{
+    "fields": [        
+        {
+            "name": "mb_name",
+            "type": "string"
+        },
+        {
+            "name": "mb_nickname",
+            "type": "string"
+        },
+        {
+            "name": "gr_birthdar",
+            "type": "string"
+        },
+        {
+            "name": "gr_mail",
+            "type": "string"
+        },
+        {
+            "name": "gr_phone",
+            "type": "string"
+        },
+        {
+            "name": "gr_cellphone",
+            "type": "string"
+        },
+        {
+            "name": "gr_instrument",
+            "type": "string"
+        },
+        {
+            "name": "gr_avathar",
+            "type": "string"
+        },
+        {
+            "name": "gr_phrase",
+            "type": "string"
+        },
+        {
+            "name": "gr_about",
+            "type": "string"
+        },
+        {
+            "name": "active",
+            "type": "boolean"
+        },
+        {
+            "name": "group_id",
+            "type": "integer#unsigned"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "group_id",
+            "references": "id",
+            "on": "managers"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "Group",
+            "type": "belongsTo",
+            "class": "App\\Group"
+        }
+    ],
+    "validations": [
+        {
+            "field": "mb_name",
+            "rules": "required|max:191"
+        }
+    ]
+} 

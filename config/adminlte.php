@@ -133,19 +133,34 @@ return [
             'icon' => 'lock',
         ],
         [
+            'text' => 'Grupos',
+            'url'  => 'admin/group',
+            'icon' => 'user',
+        ],
+        [
             'text'    => 'WebPage',
             'icon'    => 'share',
             'submenu' => [
                 [
-                    'text' => 'Level One',
+                    'text' => 'Paquetes',
                     'url'  => '#',
+                    'submenu' => [
+                        [
+                                    'text' => 'Paquete',
+                                    'url'  => 'admin/typepack',
+                                ],
+                                [
+                                    'text' => 'Detalle paquete',
+                                    'url'  => 'admin/detallpack',
+                                ],
+                    ],
                 ],
                 [
                     'text'    => 'Parametros',
                     'url'     => '#',
                     'submenu' => [
                         [
-                            'text' => 'Generos Musiales',
+                            'text' => 'Generos Musicales',
                             'url'  => 'admin/genere',
                         ],
                         [
@@ -161,7 +176,8 @@ return [
                                     'url'  => 'admin/estate',
                                 ],
                             ],
-                        ],[
+                        ],
+                        [
                             'text'    => 'Categorías',
                             'url'     => '#',
                             'submenu' => [
@@ -172,6 +188,24 @@ return [
                                 [
                                     'text' => 'Lugares presentación',
                                     'url'  => 'admin/placepresentation',
+                                ],
+                                [
+                                    'text' => 'Tipo presentación',
+                                    'url'  => 'admin/typepresentation',
+                                ],
+                            ],
+                        ],                        
+                        [
+                            'text'    => 'Multimedia',
+                            'url'     => '#',
+                            'submenu' => [
+                                [
+                                    'text' => 'Tipo',
+                                    'url'  => 'admin/multimedia',
+                                ],
+                                [
+                                    'text' => 'Media',
+                                    'url'  => 'admin/file',
                                 ],
                             ],
                         ],

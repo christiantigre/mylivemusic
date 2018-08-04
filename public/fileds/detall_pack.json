@@ -1,0 +1,36 @@
+{
+    "fields": [        
+        {
+            "name": "item_pack",
+            "type": "string"
+        },
+        {
+            "name": "active",
+            "type": "boolean"
+        },
+        {
+            "name": "typepack_id",
+            "type": "integer#unsigned"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "typepack_id",
+            "references": "id",
+            "on": "typepacks"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "Typepack",
+            "type": "belongsTo",
+            "class": "App\\Typepack"
+        }
+    ],
+    "validations": [
+        {
+            "field": "item_pack",
+            "rules": "required|max:191"
+        }
+    ]
+} 

@@ -1,0 +1,36 @@
+{
+    "fields": [        
+        {
+            "name": "sc_link",
+            "type": "text"
+        },
+        {
+            "name": "sc_redsocial",
+            "type": "string"
+        },
+        {
+            "name": "group_id",
+            "type": "integer#unsigned"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "group_id",
+            "references": "id",
+            "on": "managers"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "Group",
+            "type": "belongsTo",
+            "class": "App\\Group"
+        }
+    ],
+    "validations": [
+        {
+            "field": "sc_link",
+            "rules": "required"
+        }
+    ]
+} 

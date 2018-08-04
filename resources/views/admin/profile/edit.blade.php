@@ -135,7 +135,9 @@
                                 </div>
                             </div>
                         </div>
+                        {{--
                         @include('admin.profile.sidebar')
+                            --}}
                     </div>
 
                 <script type="text/javascript">

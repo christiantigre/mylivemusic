@@ -37,6 +37,24 @@ Route::group(['prefix' => 'admin'], function () {
   Route::post('/settingscred/{id}/upcredentials', 'AdminAuth\\AdminController@update_cred');
   Route::get('/paswordchange', 'AdminAuth\AdminController@paswordchange')->name('paswordchange');
 
+
+  Route::resource('/multimedia', 'AdminAuth\\MultimediaController');
+  Route::resource('/file', 'AdminAuth\\FileController');
+
+
+  Route::resource('/typepack', 'AdminAuth\\TypepackController');
+  Route::resource('/detallpack', 'AdminAuth\\DetallpackController');
+
+
+
+
+Route::resource('/group', 'AdminAuth\\GroupController');
+Route::resource('/socialgroup', 'AdminAuth\\SocialgroupController');//This route depend group
+Route::resource('/member', 'AdminAuth\\MemberController');//This route depend group
+Route::resource('/socialmember', 'AdminAuth\\SocialmemberController');//This route depend members
+Route::resource('/summer', 'AdminAuth\\SummerController');//This route depend group
+Route::resource('/typepresentation', 'AdminAuth\\TypepresentationController');//This route depend summers
+
 });
 
 Route::get('/categories/children', [

@@ -1,0 +1,58 @@
+{
+    "fields": [        
+        {
+            "name": "sm_time",
+            "type": "text"
+        },
+        {
+            "name": "sm_price",
+            "type": "string"
+        },
+        {
+            "name": "active", 
+            "type": "boolean"
+        },
+        {
+            "name": "group_id",
+            "type": "integer#unsigned"
+        },
+        {
+            "name": "typepresentation_id",
+            "type": "integer#unsigned"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "group_id",
+            "references": "id",
+            "on": "groups"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "typepresentation_id",
+            "references": "id",
+            "on": "typepresentations"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "Group",
+            "type": "belongsTo",
+            "class": "App\\Group"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "Typepresentation",
+            "type": "belongsTo",
+            "class": "App\\Typepresentation"
+        }
+    ],
+    "validations": [
+        {
+            "field": "sc_link",
+            "rules": "required"
+        }
+    ]
+} 
