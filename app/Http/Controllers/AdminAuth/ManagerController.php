@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 
 use App\Manager;
 use Illuminate\Http\Request;
+use App\Estate;
+use App\Country;
 
 class ManagerController extends Controller
 {
@@ -92,8 +94,11 @@ class ManagerController extends Controller
     public function edit($id)
     {
         $manager = Manager::findOrFail($id);
+        
+        $countries = Country::where('activo','1')->pluck('country', 'id');
+        $estatus = Estate::where('active','1')->pluck('estate', 'id');
 
-        return view('admin.manager.edit', compact('manager'));
+        return view('admin.manager.edit', compact('manager','countries','estatus'));
     }
 
     /**

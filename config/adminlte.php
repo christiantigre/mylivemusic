@@ -85,7 +85,7 @@ return [
     |
     */
 
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'admin/administracion',
 
     'logout_url' => 'logout',
 
@@ -115,8 +115,8 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'Pages',
-            'url'         => 'admin/pages',
+            'text'        => 'Inicio',
+            'url'         => 'admin/administracion',
             'icon'        => 'file',
             'label'       => 4,
             'label_color' => 'success',
@@ -223,8 +223,8 @@ return [
                     ],
                 ],
                 [
-                    'text' => 'Level One',
-                    'url'  => '#',
+                    'text' => 'GENERAL',
+                    'url'  => 'admin/entity',
                 ],
             ],
         ],

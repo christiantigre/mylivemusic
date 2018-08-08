@@ -1,0 +1,134 @@
+{
+    "fields": [        
+        {
+            "name": "en_name",
+            "type": "string"
+        },
+        {
+            "name": "en_phone",
+            "type": "string"
+        },
+        {
+            "name": "en_cellphone",
+            "type": "string"
+        },
+        {
+            "name": "en_mail",
+            "type": "string"
+        },
+        {
+            "name": "en_manager",
+            "type": "string"
+        },
+        {
+            "name": "en_datestart",
+            "type": "date"
+        },
+        {
+            "name": "en_logo",
+            "type": "text"
+        },
+        {
+            "name": "en_slogan",
+            "type": "text"
+        },
+        {
+            "name": "en_about",
+            "type": "text"
+        },        
+        {
+            "name": "en_linkwebpage",
+            "type": "text"
+        },
+        {
+            "name": "en_socialtwiter",
+            "type": "text"
+        },        
+        {
+            "name": "en_socialfacebook",
+            "type": "text"
+        },                
+        {
+            "name": "en_socialInstagram",
+            "type": "text"
+        },                        
+        {
+            "name": "en_socialGoogleplus",
+            "type": "text"
+        },                
+        {
+            "name": "en_socialLikedIn",
+            "type": "text"
+        },                 
+        {
+            "name": "en_socialYoutube",
+            "type": "text"
+        },                       
+        {
+            "name": "en_copyrigth",
+            "type": "text"
+        },                               
+        {
+            "name": "en_yearEdition",
+            "type": "string"
+        },
+        {
+            "name": "active",
+            "type": "boolean"
+        },
+        {
+            "name": "country_id",
+            "type": "integer#unsigned"
+        },
+        {
+            "name": "estate_id",
+            "type": "integer#unsigned"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "country_id",
+            "references": "id",
+            "on": "countries"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "estate_id",
+            "references": "id",
+            "on": "estates"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "Country",
+            "type": "belongsTo",
+            "class": "App\\Country"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "Estate",
+            "type": "belongsTo",
+            "class": "App\\Estate"
+        }
+    ],
+    "validations": [
+        {
+            "field": "en_name",
+            "rules": "required|max:191"
+        },
+        {
+            "field": "en_phone",
+            "rules": "required|max:25"
+        },
+        {
+            "field": "en_cellphone",
+            "rules": "required|max:25"
+        },
+        {
+            "field": "en_manager",
+            "rules": "required|max:191"
+        }
+    ]
+} 

@@ -47,4 +47,19 @@ class Manager extends Authenticatable
     {
         $this->notify(new ManagerResetPassword($token));
     }
+
+
+    public function Country()
+    {
+        return $this->belongsTo('App\Country');
+    }
+
+
+    public function Estate()
+    {
+        return $this->belongsTo('App\Estate');
+    }
+
+
+    
 }

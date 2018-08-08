@@ -47,7 +47,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 
   Route::resource('/manager', 'AdminAuth\\ManagerController');
-
+  Route::resource('/entity', 'AdminAuth\\EntityController');
 
 Route::resource('/group', 'AdminAuth\\GroupController');
 Route::resource('/socialgroup', 'AdminAuth\\SocialgroupController');//This route depend group

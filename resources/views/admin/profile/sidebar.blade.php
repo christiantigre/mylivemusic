@@ -44,7 +44,12 @@
 
               <p class="text-muted">
                 @if(!empty($administrador->country_id))
-                {{ $administrador->Country->country }}, {{ $administrador->Estate->estate }}
+                {{ $administrador->Country->country }},
+                @else
+                s/n
+                @endif
+                @if(!empty($administrador->estate_id))
+                {{ $administrador->Estate->estate }}
                 @else
                 s/n
                 @endif

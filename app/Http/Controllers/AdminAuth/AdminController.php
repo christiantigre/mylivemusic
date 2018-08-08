@@ -9,7 +9,7 @@ use Session;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 use App\Estate;
-use App\Country;
+use App\Country; 
 
 class AdminController extends Controller
 {

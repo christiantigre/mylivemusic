@@ -36,8 +36,10 @@ return [
     'Genere'                      => 'Genero',
     'Category'                    => 'Categoría',
     'Placepresentation'           => 'Lugar de presentación',
+    'Name'                        => 'Nombre',
     'Names'                       => 'Nombres',
     'Lastnames'                   => 'Apellidos',
+    'Contacts'                   => 'Contactos',
     'Phone'                       => 'Teléfono',
     'Cellphone'                   => 'Celular',
     'birth_date'                  => 'Fecha de nacimiento',
@@ -66,6 +68,9 @@ return [
     'Dashboard'                           => 'Escritorio', 
     'Control_panel'                       => 'Panel de control', 
     'Home'                                => 'Inicio', 
+    'Manager'                                => 'Gerente', 
+    'Entity'                                => 'Empresa', 
+    'Config'                                => 'Configuración', 
 ];
 
 
