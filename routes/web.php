@@ -46,6 +46,7 @@ Route::group(['prefix' => 'admin'], function () {
   Route::resource('/detallpack', 'AdminAuth\\DetallpackController');
 
 
+  Route::resource('/manager', 'AdminAuth\\ManagerController');
 
 
 Route::resource('/group', 'AdminAuth\\GroupController');

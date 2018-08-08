@@ -129,7 +129,7 @@ return [
                 [
                     'text' => 'Profile',
                     'url'  => 'admin/myprofile',
-                    'icon' => 'user',
+                    'icon' => 'users',
                 ],
                 [
                     'text' => 'Change Password',
@@ -137,7 +137,12 @@ return [
                     'icon' => 'lock',
                 ],
             ],
-        ],        
+        ], 
+        [
+            'text' => 'Managers',
+            'url'  => 'admin/manager',
+            'icon' => 'user',
+        ],       
         [
             'text' => 'Grupos',
             'url'  => 'admin/group',
