@@ -17,3 +17,5 @@ php artisan crud:generate Socialmember --fields_from_file="C:\Users\Christian\Dr
 php artisan crud:generate Typepresentation --fields_from_file="C:\Users\Christian\Dropbox\mylivemusic\public\fileds\type_presentation.json" --view-path=admin --controller-namespace=AdminAuth --route-group=admin
 
 php artisan crud:generate Summer --fields_from_file="C:\Users\Christian\Dropbox\mylivemusic\public\fileds\summer.json" --view-path=admin --controller-namespace=AdminAuth --route-group=admin
+
+php artisan crud:generate Manager --fields_from_file="C:\Users\Christian\Dropbox\mylivemusic\public\fileds\manager.json" --view-path=admin --controller-namespace=AdminAuth --route-group=admin

@@ -7,9 +7,15 @@ use App\Http\Controllers\Controller;
 
 use App\Detallpack;
 use Illuminate\Http\Request;
+use App\Typepack;
 
 class DetallpackController extends Controller
 {
+    //PROTEJO MI RUTA ADMINISTRADOR
+    public function __construct()
+    {
+        $this->middleware('admin', ['except' => 'logout']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -39,7 +45,10 @@ class DetallpackController extends Controller
      */
     public function create()
     {
-        return view('admin.detallpack.create');
+
+        $typespacks = Typepack::where('active','1')->pluck('pack_type', 'id');
+        
+        return view('admin.detallpack.create', compact('typespacks'));
     }
 
     /**
@@ -85,8 +94,9 @@ class DetallpackController extends Controller
     public function edit($id)
     {
         $detallpack = Detallpack::findOrFail($id);
+        $typespacks = Typepack::where('active','1')->pluck('pack_type', 'id');
 
-        return view('admin.detallpack.edit', compact('detallpack'));
+        return view('admin.detallpack.edit', compact('detallpack','typespacks'));
     }
 
     /**
@@ -123,4 +133,13 @@ class DetallpackController extends Controller
 
         return redirect('admin/detallpack')->with('flash_message', 'Detallpack deleted!');
     }
+
+    //DECLARO EL GUARD PARA QUEA ACCEDIBLE POR USUARIOS ADMIN UNICAMENTE//
+    
+    protected function guard()
+    {
+        return Auth::guard('admin');
+    }
+
+    
 }

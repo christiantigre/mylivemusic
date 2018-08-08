@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class MemberController extends Controller
 {
+    //PROTEJO MI RUTA ADMINISTRADOR
+    public function __construct()
+    {
+        $this->middleware('admin', ['except' => 'logout']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -132,4 +137,13 @@ class MemberController extends Controller
 
         return redirect('admin/member')->with('flash_message', 'Member deleted!');
     }
+
+    //DECLARO EL GUARD PARA QUEA ACCEDIBLE POR USUARIOS ADMIN UNICAMENTE//
+    
+    protected function guard()
+    {
+        return Auth::guard('admin');
+    }
+
+    
 }

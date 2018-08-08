@@ -7,9 +7,15 @@ use App\Http\Controllers\Controller;
 
 use App\Multimedia;
 use Illuminate\Http\Request;
+use App\File;
 
 class MultimediaController extends Controller
 {
+    //PROTEJO MI RUTA ADMINISTRADOR
+    public function __construct()
+    {
+        $this->middleware('admin', ['except' => 'logout']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -54,8 +60,19 @@ class MultimediaController extends Controller
 			'multimedia' => 'required|max:191'
 		]);
         $requestData = $request->all();
-        
+
+        try {
+
         Multimedia::create($requestData);
+
+        alert()->success('Se ha registrado correctamente el registro!','Petición reliazada con exito')->persistent('Close');
+            
+        } catch (Exception $e) {
+
+        alert()->warning('No se puede ingresar este registro!','No se pudo completar la petición')->persistent('Close');
+            
+        }
+        
 
         return redirect('admin/multimedia')->with('flash_message', 'Multimedia added!');
     }
@@ -103,8 +120,18 @@ class MultimediaController extends Controller
 		]);
         $requestData = $request->all();
         
+        try {
+            
         $multimedia = Multimedia::findOrFail($id);
         $multimedia->update($requestData);
+        
+        alert()->success('Se ha actualizado correctamente el registro!','Petición reliazada con exito')->persistent('Close');
+
+        } catch (Exception $e) {
+
+        alert()->warning('No se puede actualizar este registro!','No se pudo completar la petición')->persistent('Close');
+            
+        }
 
         return redirect('admin/multimedia')->with('flash_message', 'Multimedia updated!');
     }
@@ -118,8 +145,34 @@ class MultimediaController extends Controller
      */
     public function destroy($id)
     {
-        Multimedia::destroy($id);
+
+        $delete = File::where('multimedia_id','=',$id)->first();
+        
+        if(count($delete)){
+            
+            alert()->info('Se esta utilizando este registro en otras relaciones','No se puede eliminar este registro!')->persistent('Close');
+        }else{
+
+            try {
+                Multimedia::destroy($id);
+
+                alert()->success('Se ha eliminado correctamente el registro!','Petición reliazada con exito')->persistent('Close');
+            } catch (Exception $e) {
+                alert()->warning('No se ha eliminado correctamente el registro!','Petición no completada')->persistent('Close');                
+            }
+            
+            
+        }
 
         return redirect('admin/multimedia')->with('flash_message', 'Multimedia deleted!');
     }
+
+    //DECLARO EL GUARD PARA QUEA ACCEDIBLE POR USUARIOS ADMIN UNICAMENTE//
+    
+    protected function guard()
+    {
+        return Auth::guard('admin');
+    }
+
+    
 }

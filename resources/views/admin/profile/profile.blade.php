@@ -72,7 +72,8 @@
                 <div class="post">
                   <div class="user-block">
                     @if(empty($administrador->img))
-              <img class="profile-user-img img-responsive img-circle" src="{{ asset('static/avatar.jpg') }}" alt="User profile picture">
+
+              <img class="profile-user-img img-responsive img-circle" src="{{ asset('statics/avatar.jpg') }}" alt="User profile picture">
               @else
 
                     <img class="img-circle img-bordered-sm" src="{{ asset($administrador->img) }}" alt="user image">

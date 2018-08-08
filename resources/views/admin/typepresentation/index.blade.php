@@ -35,7 +35,15 @@
                                 @foreach($typepresentation as $item)
                                     <tr>
                                         <td>{{ $loop->iteration or $item->id }}</td>
-                                        <td>{{ $item->pl_presentation }}</td><td>{{ $item->detall }}</td><td>{{ $item->active }}</td>
+                                        <td>{{ $item->pl_presentation }}</td>
+                                        <td>{{ $item->detall }}</td>
+                                        <td>
+                                            @if(($item->active)=='1')
+                                                <small class="label label-success">{{ trans('adminlte::adminlte.Active') }}</small>
+                                            @else
+                                                <small class="label label-danger">{{ trans('adminlte::adminlte.Inactive') }}</small>
+                                            @endif
+                                        </td>
                                         <td>
                                             <a href="{{ url('/admin/typepresentation/' . $item->id) }}" title="{{ trans('adminlte::adminlte.View') }} Typepresentation"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> {{ trans('adminlte::adminlte.View') }}</button></a>
                                             <a href="{{ url('/admin/typepresentation/' . $item->id . '/edit') }}" title="{{ trans('adminlte::adminlte.Edit') }} Typepresentation"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {{ trans('adminlte::adminlte.Edit') }}</button></a>

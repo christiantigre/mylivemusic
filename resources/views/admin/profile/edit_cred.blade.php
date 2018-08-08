@@ -75,8 +75,8 @@
                     </div>
                 </div>
             </div>
-            {{--
             @include('admin.profile.sidebar')
+            {{--
                 --}}
         </div>
     

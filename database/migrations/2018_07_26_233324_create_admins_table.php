@@ -24,7 +24,7 @@ class CreateAdminsTable extends Migration
             $table->text('fecha_nacimiento')->nullable();
             $table->text('telefono')->nullable();
             $table->text('celular')->nullable();           
-            $table->text('activo')->nullable();           
+            $table->boolean('activo')->default(1);           
             $table->text('direccion')->nullable();           
             $table->integer('country_id')->unsigned()->nullable();
             $table->foreign('country_id')->references('id')->on('countries');

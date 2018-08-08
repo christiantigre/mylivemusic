@@ -42,7 +42,13 @@
 
               <strong><i class="fa fa-map-marker margin-r-5"></i> {{ $administrador->direccion }}</strong>
 
-              <p class="text-muted">{{ $administrador->Country->country }}, {{ $administrador->Estate->estate }}</p>
+              <p class="text-muted">
+                @if(!empty($administrador->country_id))
+                {{ $administrador->Country->country }}, {{ $administrador->Estate->estate }}
+                @else
+                s/n
+                @endif
+              </p>
 
               <hr>
               

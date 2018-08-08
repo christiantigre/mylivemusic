@@ -5,7 +5,7 @@
 
             <div class="col-md-9">
                 <div class="panel">
-                    <div class="panel-heading">{{ trans('adminlte::adminlte.Edit') }} Typepack #{{ $typepack->id }}</div>
+                    <div class="panel-heading">{{ trans('adminlte::adminlte.Edit') }} {{ trans('adminlte::adminlte.Pack_Type') }} #{{ $typepack->id }}</div>
                     <div class="panel-body">
                         <a href="{{ url('/admin/typepack') }}" title="{{ trans('adminlte::adminlte.Back') }}"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> {{ trans('adminlte::adminlte.Back') }}</button></a>
                         <br />

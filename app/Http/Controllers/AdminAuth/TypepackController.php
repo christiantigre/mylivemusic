@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class TypepackController extends Controller
 {
+    //PROTEJO MI RUTA ADMINISTRADOR
+    public function __construct()
+    {
+        $this->middleware('admin', ['except' => 'logout']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -40,7 +45,8 @@ class TypepackController extends Controller
      */
     public function create()
     {
-        return view('admin.typepack.create');
+
+        return view('admin.typepack.create', compact('typespacks'));
     }
 
     /**
@@ -53,7 +59,9 @@ class TypepackController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-			'pack_type' => 'required|max:191'
+			'pack_type' => 'required|max:191',
+            'pack_price_suscription' => 'nullable|numeric|min:0',
+            'pack_price_month' => 'nullable|numeric|min:0'
 		]);
         $requestData = $request->all();
         
@@ -101,7 +109,9 @@ class TypepackController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-			'pack_type' => 'required|max:191'
+			'pack_type' => 'required|max:191',
+            'pack_price_suscription' => 'nullable|numeric|min:0',
+            'pack_price_month' => 'nullable|numeric|min:0'
 		]);
         $requestData = $request->all();
         
@@ -124,4 +134,12 @@ class TypepackController extends Controller
 
         return redirect('admin/typepack')->with('flash_message', 'Typepack deleted!');
     }
+
+    //DECLARO EL GUARD PARA QUEA ACCEDIBLE POR USUARIOS ADMIN UNICAMENTE//
+    
+    protected function guard()
+    {
+        return Auth::guard('admin');
+    }
+    
 }

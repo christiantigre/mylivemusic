@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class TypepresentationController extends Controller
 {
+    //PROTEJO MI RUTA ADMINISTRADOR
+    public function __construct()
+    {
+        $this->middleware('admin', ['except' => 'logout']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -125,4 +130,12 @@ class TypepresentationController extends Controller
 
         return redirect('admin/typepresentation')->with('flash_message', 'Typepresentation deleted!');
     }
+
+    //DECLARO EL GUARD PARA QUEA ACCEDIBLE POR USUARIOS ADMIN UNICAMENTE//
+    
+    protected function guard()
+    {
+        return Auth::guard('admin');
+    }
+    
 }

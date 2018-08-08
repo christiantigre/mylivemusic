@@ -19,5 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PlaceTableSeeder::class);
         $this->call(TypepackTableSeeder::class);
         $this->call(TypepresentationTableSeeder::class);
+        $this->call(DetallPackTableSeeder::class);
+        $this->call(MultimediaTableSeeder::class);
     }
 }

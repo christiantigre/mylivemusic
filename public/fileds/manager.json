@@ -1,0 +1,78 @@
+{
+    "fields": [        
+        {
+            "name": "mng_name",
+            "type": "string"
+        },
+        {
+            "name": "mng_lastname",
+            "type": "string"
+        },
+        {
+            "name": "mng_phone",
+            "type": "string"
+        },
+        {
+            "name": "mng_cellphone",
+            "type": "string"
+        },
+        {
+            "name": "mng_mail",
+            "type": "string"
+        },        
+        {
+            "name": "mng_address",
+            "type": "string"
+        },
+        {
+            "name": "mng_avathar",
+            "type": "string"
+        },
+        {
+            "name": "active",
+            "type": "boolean"
+        },
+        {
+            "name": "country_id",
+            "type": "integer#unsigned"
+        },
+        {
+            "name": "estate_id",
+            "type": "integer#unsigned"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "country_id",
+            "references": "id",
+            "on": "countries"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "estate_id",
+            "references": "id",
+            "on": "estates"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "Country",
+            "type": "belongsTo",
+            "class": "App\\Country"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "Estate",
+            "type": "belongsTo",
+            "class": "App\\Estate"
+        }
+    ],
+    "validations": [
+        {
+            "field": "mng_name",
+            "rules": "required|max:191"
+        }
+    ]
+} 

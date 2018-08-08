@@ -38,17 +38,22 @@
     <label><input name="active" type="radio" value="0" {{ (isset($file) && 0 == $file->active) ? 'checked' : '' }}> No</label>
 </div>
 
-
-
-        {!! $errors->first('active', '<p class="help-block">:message</p>') !!}
+{!! $errors->first('active', '<p class="help-block">:message</p>') !!}
     </div>
-</div><div class="form-group {{ $errors->has('multimedia_id') ? 'has-error' : ''}}">
-    <label for="multimedia_id" class="col-md-4 control-label">{{ 'Multimedia Id' }}</label>
-    <div class="col-md-6">
-        <input class="form-control" name="multimedia_id" type="number" id="multimedia_id" value="{{ $file->multimedia_id or ''}}" >
+</div>
+
+<div class="form-group {{ $errors->has('multimedia_id') ? 'has-error' : ''}}">
+{!! Form::label('multimedia_id', trans('adminlte::adminlte.Multimedium'), ['class' => 'col-md-4 control-label']) !!}
+<div class="col-md-6">
+    {{--
+        {!! Form::text('multimedia_id', null, ['class' => 'form-control']) !!}
+        --}}
+        {!! Form::select('multimedia_id', $tipos, null, ['class' => 'form-control','id'=>'multimedia_id']) !!}
+
         {!! $errors->first('multimedia_id', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
+
 
 <div class="form-group">
     <div class="col-md-offset-4 col-md-4">

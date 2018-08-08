@@ -123,15 +123,21 @@ return [
         ],
         'ACCOUNT SETTINGS',
         [
-            'text' => 'Profile',
-            'url'  => 'admin/myprofile',
-            'icon' => 'user',
-        ],
-        [
-            'text' => 'Change Password',
-            'url'  => 'admin/paswordchange',
-            'icon' => 'lock',
-        ],
+            'text'  =>  'Mi Cuenta',
+            'icon'   =>  'user',
+            'submenu'   => [
+                [
+                    'text' => 'Profile',
+                    'url'  => 'admin/myprofile',
+                    'icon' => 'user',
+                ],
+                [
+                    'text' => 'Change Password',
+                    'url'  => 'admin/paswordchange',
+                    'icon' => 'lock',
+                ],
+            ],
+        ],        
         [
             'text' => 'Grupos',
             'url'  => 'admin/group',

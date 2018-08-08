@@ -7,9 +7,15 @@ use App\Http\Controllers\Controller;
 
 use App\File;
 use Illuminate\Http\Request;
+use App\Multimedia;
 
 class FileController extends Controller
 {
+    //PROTEJO MI RUTA ADMINISTRADOR
+    public function __construct()
+    {
+        $this->middleware('admin', ['except' => 'logout']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -43,7 +49,10 @@ class FileController extends Controller
      */
     public function create()
     {
-        return view('admin.file.create');
+        $tipos = Multimedia::where('active','1')->pluck('multimedia', 'id');
+
+        return view('admin.file.create', compact('tipos'));
+
     }
 
     /**
@@ -60,7 +69,16 @@ class FileController extends Controller
 		]);
         $requestData = $request->all();
         
+        try {
+            
         File::create($requestData);
+        alert()->success('Se ha registrado correctamente el registro!','Petición reliazada con exito')->persistent('Close');
+
+        } catch (Exception $e) {
+
+        alert()->success('No se ha completado el registro!','Petición no completada')->persistent('Close');
+            
+        }
 
         return redirect('admin/file')->with('flash_message', 'File added!');
     }
@@ -89,8 +107,9 @@ class FileController extends Controller
     public function edit($id)
     {
         $file = File::findOrFail($id);
+        $tipos = Multimedia::where('active','1')->pluck('multimedia', 'id');
 
-        return view('admin.file.edit', compact('file'));
+        return view('admin.file.edit', compact('file','tipos'));
     }
 
     /**
@@ -107,9 +126,19 @@ class FileController extends Controller
 			'title' => 'required|max:191'
 		]);
         $requestData = $request->all();
+
+        try {
+                    
         
         $file = File::findOrFail($id);
         $file->update($requestData);
+        alert()->success('Se ha actualizado correctamente el registro!','Petición reliazada con exito')->persistent('Close');
+
+        } catch (Exception $e) {
+
+        alert()->warning('No se ha actualizado el registro!','No se pudo completar la petición')->persistent('Close');
+
+        }
 
         return redirect('admin/file')->with('flash_message', 'File updated!');
     }
@@ -123,8 +152,27 @@ class FileController extends Controller
      */
     public function destroy($id)
     {
+
+        try {
+
         File::destroy($id);
+        alert()->success('Se ha eliminado correctamente el registro!','Petición completada con exito')->persistent('Close');
+            
+        } catch (Exception $e) {
+
+        alert()->success('No se ha eliminado el registro!','Petición no completada.')->persistent('Close');
+            
+        }
 
         return redirect('admin/file')->with('flash_message', 'File deleted!');
     }
+
+    //DECLARO EL GUARD PARA QUEA ACCEDIBLE POR USUARIOS ADMIN UNICAMENTE//
+    
+    protected function guard()
+    {
+        return Auth::guard('admin');
+    }
+
+    
 }

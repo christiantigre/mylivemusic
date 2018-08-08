@@ -5,7 +5,7 @@
 
             <div class="col-md-9">
                 <div class="panel panel-default">
-                    <div class="panel-heading">{{ trans('adminlte::adminlte.Multimedia') }}</div>
+                    <div class="panel-heading">{{ trans('adminlte::adminlte.Multimedium') }}</div>
                     <div class="panel-body">
                         <a href="{{ url('/admin/multimedia/create') }}" class="btn btn-success btn-sm" title="{{ trans('adminlte::adminlte.Add_New') }} Multimedia">
                             <i class="fa fa-plus" aria-hidden="true"></i> {{ trans('adminlte::adminlte.Add_New') }}
@@ -28,14 +28,21 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Multimedia</th><th>Active</th><th>Actions</th>
+                                        <th>#</th><th>{{ trans('adminlte::adminlte.Multimedium') }}</th><th>{{ trans('adminlte::adminlte.Active') }}</th><th>{{ trans('adminlte::adminlte.Actions') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($multimedia as $item)
                                     <tr>
                                         <td>{{ $loop->iteration or $item->id }}</td>
-                                        <td>{{ $item->multimedia }}</td><td>{{ $item->active }}</td>
+                                        <td>{{ $item->multimedia }}</td>
+                                        <td>
+                                            @if(($item->active)=='1')
+                                                <small class="label label-success">{{ trans('adminlte::adminlte.Active') }}</small>
+                                            @else
+                                                <small class="label label-danger">{{ trans('adminlte::adminlte.Inactive') }}</small>
+                                            @endif
+                                        </td>
                                         <td>
                                             <a href="{{ url('/admin/multimedia/' . $item->id) }}" title="{{ trans('adminlte::adminlte.View') }} Multimedia"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> {{ trans('adminlte::adminlte.View') }}</button></a>
                                             <a href="{{ url('/admin/multimedia/' . $item->id . '/edit') }}" title="{{ trans('adminlte::adminlte.Edit') }} Multimedia"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {{ trans('adminlte::adminlte.Edit') }}</button></a>

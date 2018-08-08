@@ -54,7 +54,20 @@ return [
     'Password_confirmed'                       => 'Confirma Contraseña',
     'Credentials'                       => 'Credenciales', 
     'Profile'                       => 'Perfil', 
+    'Pack'                       => 'Paquete', 
+    'Item_Pack'                       => 'Item de Paquete', 
+    'Detallpack'                       => 'Detalle de Paquete', 
+    'Actions'                       => 'Acciónes', 
+    'Pack_Type'                       => 'Tipo de Paquete', 
+    'Price_Suscription'                       => 'Precio de Suscripción', 
+    'Price_Month'                       => 'Precio de Mensual', 
+    'DetallTypePack'                       => 'Detalle de Tipo Paquete', 
+    'Multimedium'                       => 'Multimedia', 
+    'Dashboard'                           => 'Escritorio', 
+    'Control_panel'                       => 'Panel de control', 
+    'Home'                                => 'Inicio', 
 ];
+
 
 
 

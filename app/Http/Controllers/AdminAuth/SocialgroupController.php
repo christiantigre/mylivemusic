@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class SocialgroupController extends Controller
 {
+    //PROTEJO MI RUTA ADMINISTRADOR
+    public function __construct()
+    {
+        $this->middleware('admin', ['except' => 'logout']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -123,4 +128,12 @@ class SocialgroupController extends Controller
 
         return redirect('admin/socialgroup')->with('flash_message', 'Socialgroup deleted!');
     }
+
+    //DECLARO EL GUARD PARA QUEA ACCEDIBLE POR USUARIOS ADMIN UNICAMENTE//
+    
+    protected function guard()
+    {
+        return Auth::guard('admin');
+    }
+    
 }
